@@ -4,6 +4,10 @@
 Handle with care, this can delete your instances if not properly configured!
 
 #### Prerequisite
+* Install dependencies
+```
+pip install python-openstackclient prettytable pytz python-dateutil
+```
 * Make sure you edited hard-coded `text_pattern` from the script (search for `# edit text_pattern`).
 * You should have `clouds.yaml` file in the same dir as `cleanup-vms.py` for seemless authentiation.
 ```
