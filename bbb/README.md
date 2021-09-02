@@ -1,4 +1,4 @@
-## URL-Digger
-Retrive all urls from file, remove github links.
+## Bug Bounty Box 
+Quick installation script to configure debian environment with pentesting tools.
 
-#Todo: Add threads
+Source: BBHT of nahamsec and JR0ch17.
