@@ -17,7 +17,8 @@ def parse_cmd_line():
         help="List VM name and age of all OpenStack instances",
     )
     parser.add_argument(
-        "--max-hours", help="List all VM with max-hours since the VM was created",
+        "--max-hours",
+        help="Option to provide Max hours since the VM was created",
     )
     parser.add_argument(
         "--dryrun",
@@ -37,10 +38,14 @@ def parse_cmd_line():
     return args
 
 
+def _connection():
+    return openstack.connect(cloud="openstack")
+
+
 def _get_vms_obj():
     obj = []
+    conn = _connection()
     # openstack.enable_logging(debug=True) // enble logging
-    conn = openstack.connect(cloud="openstack")
     try:
         for instance in conn.list_servers():
             obj.append(instance)
@@ -104,7 +109,16 @@ def cleanup_vms(text_pattern, max_hours, dryrun):
             for instance_name in instance_data:
                 for server in _get_vms_obj():
                     if server.name == instance_name:
-                        print("VM deleted => {}".format(server.name))
+                        if _connection().delete_server(server.name):
+                            print(
+                                "VM deleted sucessfully => {}".format(
+                                    server.name
+                                )
+                            )
+                        else:
+                            print(
+                                "VM deletion failed => {}".format(server.name)
+                            )
 
 
 if __name__ == "__main__":
@@ -114,13 +128,17 @@ if __name__ == "__main__":
     if args.max_hours:
         if not args.cleanup:
             cleanup_vms(
-                text_pattern="adsaea12asd", max_hours=int(args.max_hours), dryrun=False,
+                text_pattern="adsaea12asd", # edit text_pattern
+                max_hours=int(args.max_hours),
+                dryrun=False,
             )
         elif not args.list:
             max_hours(int(args.max_hours))
         elif not args.dryrun:
             cleanup_vms(
-                text_pattern="adsaea12asd", max_hours=int(args.max_hours), dryrun=True,
+                text_pattern="adsaea12asd", # edit text_pattern
+                max_hours=int(args.max_hours),
+                dryrun=True,
             )
         else:
             print("Error: You have to specify --list with max-hours option!")
