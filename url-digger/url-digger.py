@@ -9,7 +9,10 @@ After running script:
 import re
 
 foo = open("data.txt")
-links = re.findall("http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", foo.read())
+links = re.findall(
+    "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+",
+    foo.read(),
+)
 
 # Removing github links
 new_list = []
@@ -20,4 +23,4 @@ for url in links:
 # Saving new list to links.txt
 thefile = open("links.txt", "w")
 for bar in new_list:
-  thefile.write("%s\n" % bar)
+    thefile.write("%s\n" % bar)
