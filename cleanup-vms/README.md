@@ -4,7 +4,7 @@
 Handle with care, this can delete your instances if not properly configured!
 
 #### Prerequisite
-* Make sure you gedited hard-coded `text_pattern` from the script.
+* Make sure you gedited hard-coded `text_pattern` from the script (search for `# edit text_pattern`).
 * You should have `clouds.yaml` file in the same dir as `cleanup-vms.py` for seemless authentiation.
 ```
 .
