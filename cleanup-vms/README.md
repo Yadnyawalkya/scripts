@@ -1,7 +1,8 @@
 ### Script to cleanup old OpenStack instances
 
 #### Prerequisite
-You should have `clouds.yaml` file in the same dir as `cleanup-vms.py` for seemless authentiation.
+* Make sure you gedited hard-coded `text_pattern` from the script.
+* You should have `clouds.yaml` file in the same dir as `cleanup-vms.py` for seemless authentiation.
 ```
 .
 ├── cleanup-vms.py
