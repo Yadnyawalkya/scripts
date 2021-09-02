@@ -75,7 +75,7 @@ def _get_vms():
 
 def list_all():
     table = PrettyTable()
-    table.field_names = ["VM Name", "Age"]
+    table.field_names = ["VM Name", "Age (Hours)"]
     vms_data = _get_vms()
     table.add_rows(vms_data)
     print(table)
@@ -84,7 +84,7 @@ def list_all():
 def max_hours(max_hours):
     vms_data = []
     table = PrettyTable()
-    table.field_names = ["VM Name", "Age (Less than {}h)".format(max_hours)]
+    table.field_names = ["VM Name", "Age (Less than {} (Hours)".format(max_hours)]
     for vms in _get_vms():
         # check if VM age is greater than maximum hours
         if vms[1] <= max_hours:
@@ -96,7 +96,7 @@ def max_hours(max_hours):
 def cleanup_vms(text_pattern, max_hours, dryrun):
     delete_list = []
     table = PrettyTable()
-    table.field_names = ["VM Name", "Age (Less than {}h)".format(max_hours)]
+    table.field_names = ["VM Name", "Age (Less than {} (Hours)".format(max_hours)]
     for vms in _get_vms():
         # check if VM age is greater than maximum hours
         if (text_pattern in vms[0]) and (vms[1] <= max_hours):
