@@ -1,0 +1,5 @@
+any_vm_name, not_required, not_required
+v2v-dnd-ytale-window1, abc, 11
+v2v-dnd-ytale-fedora1, xyz, 22
+vm_not_exist1, provider1, 33
+vm_not_exist2, provider2, 44
