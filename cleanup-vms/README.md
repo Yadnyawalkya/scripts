@@ -1,5 +1,8 @@
 ### Script to cleanup old OpenStack instances
 
+#### Warning
+Handle with care, this can delete your instances if not properly configured!
+
 #### Prerequisite
 * Make sure you gedited hard-coded `text_pattern` from the script.
 * You should have `clouds.yaml` file in the same dir as `cleanup-vms.py` for seemless authentiation.
